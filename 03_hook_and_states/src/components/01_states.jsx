@@ -28,7 +28,7 @@ const States = () => {
     const [count, setCount] = useState(0);
 
     const handleIncrement = () => {
-        setCount(prevCount => prevCount + 1)
+        setCount((prev) => prev + 1)
     }
 
     return (
