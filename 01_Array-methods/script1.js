@@ -44,7 +44,7 @@ console.log("After push:", cities);
 
 // JavaScript Array unshift() Method
 // The unshift() method adds a new element to the beginning of an array.
-
+                            
 let animals = ["Dog", "Cat", "Horse"];
 animals.unshift("Lion");
 console.log("After unshift:", animals);

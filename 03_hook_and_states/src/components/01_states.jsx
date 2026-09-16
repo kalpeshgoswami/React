@@ -36,6 +36,11 @@ const States = () => {
 
             <h1>count value :{count}</h1>
 
+            <button onClick={handleIncrement}>Increment +1</button>
+
+            <br />
+            <br />
+
             <button onClick={() => {
                 handleIncrement();
                 handleIncrement();
