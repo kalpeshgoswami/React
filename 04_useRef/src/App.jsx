@@ -1,6 +1,7 @@
 import React from "react";
 import UseRef from "./components/01_UseRef";
 import UseRef_02 from "./components/02_UseRef";
+import InputName from "./components/03_useRef";
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
 
       {/* <UseRef_02/> */}
 
-      
+      <InputName/>
 
     </>
 
