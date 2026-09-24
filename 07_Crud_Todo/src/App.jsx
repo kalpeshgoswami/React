@@ -1,31 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AddTodo from './components/AddTodo';
+import ListTodo from './components/ListTodo';
 
-export const App = () => {
+const App = () => {
 
-  const AllTodo = [
+  const initialTodos = [
     {
       id: 1,
-      task: "Learn",
-      description: "You have to learn new things daily"
+      Task: "Learn",
+      Description: "You have to learn new things daily"
     },
     {
       id: 2,
-      task: "Reading",
-      description: "You have to read a book for 30 minutes every day"
+      Task: "Reading",
+      Description: "You have to read a book for 30 minutes every day"
     },
     {
       id: 3,
-      task: "Playing",
-      description: "You have to play cricket every day"
+      Task: "Playing",
+      Description: "You have to play cricket every day"
     },
   ];
+
+
+  const handleAdd= (input) => {
+
+    const newTodo = {
+      id: new Date().getTime(),
+      Task: input.Task,
+      Description: input.Description,
+    };
+    setTodos((pre) => [...pre, newTodo])
+  }
+
+  const [todos, setTodos] = useState(initialTodos);
 
   return (
 
     <>
-      <AddTodo/>
+      <AddTodo handleAdd={handleAdd} />
+      <ListTodo todos={todos} />
     </>
-    
+
   )
 }
+
+export default App

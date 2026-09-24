@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-const AddTodo = () => {
+const AddTodo = ({ handleAdd }) => {
 
     const [input, setInput] = useState({
-        task: "",
-        description: ""
+        Task: "",
+        Description: ""
     })
 
     const handleChange = (field, e) => {
@@ -16,12 +16,16 @@ const AddTodo = () => {
         })
     }
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        handleAdd
+        (input)
+
         setInput({
-            task: "",
-            description: ""
+            Task: "",
+            Description: ""
         })
     }
 
@@ -30,15 +34,15 @@ const AddTodo = () => {
         <>
             <form onSubmit={handleSubmit}>
 
-                <input type="text" placeholder='Enter your task' value={input.task} onChange={(e) => handleChange("task", e)} />
+                <input type="text" placeholder='Enter your Task' value={input.Task} onChange={(e) => handleChange("Task", e)} />
 
                 <br /><br />
 
-                <input type="text" placeholder='Enter your description' value={input.description} onChange={(e) => handleChange("description", e)} />
+                <input type="text" placeholder='Enter your Description' value={input.Description} onChange={(e) => handleChange("Description", e)} />
 
                 <br /><br />
 
-                <button type="submit">Click</button>
+                <button type="submit">Submit</button>
 
             </form>
         </>
