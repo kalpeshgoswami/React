@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const AddTodo = ({ handleAdd }) => {
+const AddTodo = ({ AddTodo,EditVal }) => {
 
     const [input, setInput] = useState({
         Task: "",
         Description: ""
-    })
+    });
+
+    useEffect(()=>{
+        EditVal?setInput(EditVal):null
+    },[EditVal]);
 
     const handleChange = (field, e) => {
-        setInput((pre) => {
+        setInput((prev) => {
             return {
-                ...pre,
+                ...prev,
                 [field]: e.target.value
             }
         })

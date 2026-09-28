@@ -22,24 +22,50 @@ const App = () => {
     },
   ];
 
+  const [todos, setTodos] = useState(initialTodos);
 
-  const handleAdd= (input) => {
+  const [EditVal, setEditVal] = useState(null);
 
-    const newTodo = {
-      id: new Date().getTime(),
-      Task: input.Task,
-      Description: input.Description,
-    };
-    setTodos((pre) => [...pre, newTodo])
+  const handleAdd = (input) => {
+
+    if (!input.Task || !input.Description) {
+      alert("Task data are required");
+      return;
+    } else if (EditVal) {
+      setEditVal((todos) =>
+        todos.map((t) =>
+          t.id === EditVal.id
+            ? { Task: input.Task, Description: input.Description }
+            : t,
+        )
+      )
+      setEditVal(null)
+    } else {
+      const newTodo = {
+        id: new Date().getTime(),
+        Task: input.Task,
+        Description: input.Description,
+      };
+      setTodos((pre) => [...pre, newTodo])
+      alert("Task add successfully")
+    }
   }
 
-  const [todos, setTodos] = useState(initialTodos);
+  const handleDelete = (id) => {
+    setTodos(todos.filter((t) => t.id !== id))
+  }
+
+  const handleEdit = (id) => {
+    const todo = todos.find((t) => t.id === id)
+
+    setEditVal(todo)
+  }
 
   return (
 
     <>
-      <AddTodo handleAdd={handleAdd} />
-      <ListTodo todos={todos} />
+      <AddTodo AddTodo={handleAdd} EditVal={EditVal} />
+      <ListTodo todos={todos} handleDelete={handleDelete} handleEdit={handleEdit} />
     </>
 
   )
