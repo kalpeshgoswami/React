@@ -1,18 +1,23 @@
-import React from "react";
-import Home from "./components/Home";
-import Service from "./components/Server";
+import React, { Suspense, lazy } from "react";
 import MainLayout from "./router/MainLayout";
+import Loading from "./components/loading";
+import Error from "./components/Error";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const Home = lazy(() => import("./components/Home"));
+const Service = lazy(() => import("./components/Server"));
+const About = lazy(() => import("./components/About"));
 
 const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
+      errorElement: <Error />,
       children: [
         {
-          path:"/",
+          path: "/",
           element: <Home />,
         },
         {
@@ -24,7 +29,11 @@ const App = () => {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <>
+      <Suspense fallback={<Loading />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </>
   );
 };
 
