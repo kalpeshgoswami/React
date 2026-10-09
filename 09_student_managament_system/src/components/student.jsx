@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Table, Alert, Spinner } from "react-bootstrap";
-import { getAllStudent } from "../api/StudentFetch";
+import { Button, Table, Alert, Spinner } from "react-bootstrap";
+import { deleteStudent, getAllStudent } from "../api/StudentFetch";
 
 const Student = () => {
     const [student, setStudent] = useState([]);
@@ -35,6 +35,18 @@ const Student = () => {
         return <Alert variant="danger" className="mt-4">{error}</Alert>;
     }
 
+    const handleDelete = async (id) => {
+        try {
+
+            await deleteStudent(id);
+            await loadData()
+
+        } catch (error) {
+            console.log("Delete Error:", error);
+            setError(error.message)
+        }
+    }
+
     return (
         <Table striped bordered hover className="mt-4">
             <thead>
@@ -45,6 +57,7 @@ const Student = () => {
                     <th>Email</th>
                     <th>Course</th>
                     <th>Phone Number</th>
+                    <th colSpan={2} >Actions</th>
                 </tr>
             </thead>
 
@@ -57,6 +70,11 @@ const Student = () => {
                         <td>{S.email}</td>
                         <td>{S.course}</td>
                         <td>{S.PhoneNumber}</td>
+                        <td><Button variant="warning" >Edit</Button></td>
+                        <td><Button
+                            variant="danger"
+                            onClick={() => handleDelete(S._id)}
+                        >Delete</Button></td>
                     </tr>
                 ))}
             </tbody>

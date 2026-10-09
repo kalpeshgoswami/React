@@ -49,3 +49,26 @@ export const addStudent = async (studentData) => {
         throw error;
     }
 };
+
+export async function deleteStudent(id){
+  try {
+    const res= await fetch(`${BASE_URL}/${id}`,{
+      method:"DELETE",
+    })
+
+    const data = await res.json();
+
+    if(!res.ok){
+      console.log("Backend error:",data);
+      throw new Error(data.message ||"Failed to delete Student");
+    }
+
+    console.log("Backend error:",data);
+
+    return data;
+
+  } catch (error) {
+    console.error("Delete API Error:",error)
+    throw error
+  }
+}
