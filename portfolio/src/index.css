@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ── Enable Tailwind dark-mode via class selector ───────────────── */
+@variant dark (&:where(.dark, .dark *));
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* ── Base body theming ───────────────────────────────────────────── */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0f1e;
+  color: #e2e8f0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* ── Custom scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0f1e; }
+html.light ::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 3px; }
+
+/* ── Glassmorphism utility ───────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ── Gradient text utility ───────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow effect ─────────────────────────────────────────────────── */
+.glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1);
+}
+
+/* ── Slide transitions ───────────────────────────────────────────── */
+.slide-enter { opacity: 0; transform: translateX(60px); }
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.slide-exit { opacity: 1; transform: translateX(0); }
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* ── Keyframe animations ─────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50%       { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes profile-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Animation classes ───────────────────────────────────────────── */
+.animate-float         { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow    { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-fade-in-up    { animation: fadeInUp 0.6s ease forwards; }
+.animate-profile-float { animation: profile-float 4s ease-in-out infinite; }
+.animate-marquee       { animation: marquee 30s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ── Hero section gradient ───────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(135deg, #0a0f1e 0%, #1a1040 50%, #0a0f1e 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+html.light .hero-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #ede9fe 50%, #f0fdf4 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ── Grid pattern overlay ────────────────────────────────────────── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+html.light .grid-pattern {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ── Card hover effect ───────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+}
+
+html.light .card-hover:hover {
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.12);
+}
+
+/* ── Neon border ─────────────────────────────────────────────────── */
+.neon-border {
+  border: 1px solid transparent;
+  background: linear-gradient(#0a0f1e, #0a0f1e) padding-box,
+              linear-gradient(135deg, #6366f1, #8b5cf6) border-box;
+}
+
+html.light .neon-border {
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+              linear-gradient(135deg, #6366f1, #8b5cf6) border-box;
+}
