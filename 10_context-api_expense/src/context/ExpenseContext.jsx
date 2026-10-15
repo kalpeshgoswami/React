@@ -1,29 +1,46 @@
 import { Children, createContext, useState } from "react";
 
 export const expenseContext = createContext({
-    expenseList:[],
+    expenseList: [],
+    addExpense: () => { }
 });
 
-const ExpenseContext = ({children}) => {
+const ExpenseContext = ({ children }) => {
 
     const initialValues = [{
-        amount:1000,
-        type:"debit",
-        category:"food"
-    },{
-        amount:5000,
-        type:"debit",
-        category:"sport"
+        title: "abcd",
+        description: "abcd",
+        amount: "100",
+        date: "01/01/2004",
+        category: "abcd",
+        type: "abcd"
+    }, {
+        title: "abcd",
+        description: "abcd",
+        amount: "100",
+        date: "01/01/2004",
+        category: "abcd",
+        type: "abcd"
     }]
 
-    const [expenseList,setExpenseList]=useState(initialValues)
 
-    const value ={
-        expenseList
+    const [expenseList, setExpenseList] = useState(initialValues)
+
+    const addExpense = (input) => {
+        const newExpense = {
+            ...input,
+            id: Date.now(),
+        }
+        setExpenseList((prev) => [...prev, newExpense])
+    }
+    const value = {
+        expenseList,
+        addExpense
+
     }
 
 
-    return(
+    return (
         <expenseContext.Provider value={value}>{children}</expenseContext.Provider>
     )
 

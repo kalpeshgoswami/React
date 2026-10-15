@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Add = () => {
+const Add = ({handleAdd}) => {
 
     const [input, setInput] = useState({
         title: "",
@@ -13,7 +13,7 @@ const Add = () => {
 
     console.log("input", input);
 
-    const handleChange = (e, field) => {
+    const handleChange = (field, e) => {
         setInput((prev) => {
             return {
                 ...prev,
@@ -24,11 +24,25 @@ const Add = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        handleAdd({
+             ...input,
+             amount:Number(input.amount)
+        })
+        setInput({
+            title: "",
+            description: "",
+            amount: "",
+            date: "",
+            category: "",
+            type: ""
+        })
+        setInput(initialForm);
     }
 
     return (
         <>
-            <form onCLick={handleSubmit}>
+            <form onSubmit={handleSubmit}>
 
                 <input type="text" placeholder='Enter title' value={input.title} onChange={(e) => handleChange("title", e)} />
 

@@ -1,17 +1,22 @@
 import { useContext } from "react"
-import ExpenseContext, { expenseContext } from "./context/ExpenseContext"
+import { expenseContext } from "./context/ExpenseContext"
 import Add from "./components/Add"
-
+import ExpenseList from "./components/ExpenseList"
 
 const App = () => {
 
-    const { expenseList } = useContext(expenseContext)
+    const { expenseList,addExpense } = useContext(expenseContext)
 
     console.log("expenseList", expenseList)
 
+    const handleAdd = (input) => {
+        addExpense(input)
+    }
+
     return (
         <>
-            <Add />
+            <Add handleAdd={handleAdd}/>
+            <ExpenseList expenseList={expenseList} />
         </>
     )
 }
