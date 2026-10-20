@@ -2,10 +2,11 @@ import { useContext } from "react"
 import { expenseContext } from "./context/ExpenseContext"
 import Add from "./components/Add"
 import ExpenseList from "./components/ExpenseList"
+import ExpenseStats from "./components/ExpenseStats"
 
 const App = () => {
 
-    const { expenseList,addExpense } = useContext(expenseContext)
+    const { expenseList, addExpense } = useContext(expenseContext)
 
     console.log("expenseList", expenseList)
 
@@ -15,7 +16,10 @@ const App = () => {
 
     return (
         <>
-            <Add handleAdd={handleAdd}/>
+            <Add handleAdd={handleAdd} />
+
+            <ExpenseStats />
+
             <ExpenseList expenseList={expenseList} />
         </>
     )
