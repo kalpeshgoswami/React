@@ -1,35 +1,50 @@
-const ListTodo = ({ todos, handleDelete, handleEdit }) => {
+import Button from 'react-bootstrap/Button';
+
+const ListTodo = ({ todos, handleDelete, handleEdit, handleCheck }) => {
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Task</th>
-                    <th>Description</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+        <>
+            <div className="container">
+                <table border="1px" className="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>status</th>
+                            <th>Task</th>
+                            <th>Description</th>
+                            <th colSpan={2}>Actions</th>
+                        </tr>
+                    </thead>
 
-            <tbody>
-                {todos.map((t, index) => (
-                    <tr key={t.id}>
-                        <td>{index + 1}</td>
-                        <td>{t.Task}</td>
-                        <td>{t.Description}</td>
+                    <tbody>
+                        {todos.map((t, index) => (
+                            <tr key={t.id}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={t.completed}
+                                        onChange={() => handleCheck(t.id)}
+                                    />
+                                </td>
+                                <td>{t.Task}</td>
+                                <td>{t.Description}</td>
 
-                        <td>
-                            <button onClick={() => handleEdit(t.id)}>
-                                Edit
-                            </button>
-
-                            <button onClick={() => handleDelete(t.id)}>
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+                                <td>
+                                    <Button variant="outline-success" onClick={() => handleEdit(t.id)}>
+                                        Edit
+                                    </Button>
+                                </td>
+                                <td>
+                                    <Button variant="outline-danger" onClick={() => handleDelete(t.id)}>
+                                        Delete
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
 };
 

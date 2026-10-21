@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import * as formik from "formik";
 
-import { addStudent } from "../api/StudentFetch";
+import { addStudent,updatedStudent } from "../api/StudentFetch";
 import validationSchema from "../validation/validation";
 
 function AddStudent() {

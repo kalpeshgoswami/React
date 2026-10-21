@@ -1,5 +1,7 @@
 
 import React, { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import "./style.css"
 
 const AddTodo = ({ addTodo, EditVal }) => {
   const [input, setInput] = useState({
@@ -31,31 +33,30 @@ const AddTodo = ({ addTodo, EditVal }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter your Task"
-        value={input.Task}
-        onChange={(e) => handleChange("Task", e)}
-      />
+    <>
+      <form onSubmit={handleSubmit} className="inputForm">
 
-      <br />
-      <br />
+        <input className="input"
+          type="text"
+          placeholder="Enter your Task"
+          value={input.Task}
+          onChange={(e) => handleChange("Task", e)}
+        />
 
-      <input
-        type="text"
-        placeholder="Enter your Description"
-        value={input.Description}
-        onChange={(e) => handleChange("Description", e)}
-      />
+        <input
+          className="input"
+          type="text"
+          placeholder="Enter your Description"
+          value={input.Description}
+          onChange={(e) => handleChange("Description", e)}
+        />
 
-      <br />
-      <br />
+        <Button type="submit" variant="outline-primary">
+          {EditVal ? "Update" : "Submit"}
+        </Button>
 
-      <button type="submit">
-        {EditVal ? "Update" : "Submit"}
-      </button>
-    </form>
+      </form>
+    </>
   );
 };
 

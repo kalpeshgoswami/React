@@ -9,16 +9,19 @@ const App = () => {
       id: 1,
       Task: "Learn",
       Description: "You have to learn new things daily",
+      completed: true
     },
     {
       id: 2,
       Task: "Reading",
       Description: "You have to read a book for 30 minutes every day",
+      completed: true
     },
     {
       id: 3,
       Task: "Playing",
       Description: "You have to play cricket every day",
+      completed: false
     },
   ];
 
@@ -36,10 +39,10 @@ const App = () => {
         todos.map((t) =>
           t.id === EditVal.id
             ? {
-                ...t,
-                Task: input.Task,
-                Description: input.Description,
-              }
+              ...t,
+              Task: input.Task,
+              Description: input.Description,
+            }
             : t
         )
       );
@@ -70,14 +73,60 @@ const App = () => {
     setEditVal(todo);
   };
 
+  const handleCheck = (id) => {
+    setTodos((prev) =>
+      prev.map((t) =>
+        t.id === id
+          ? {
+            ...t,
+            completed: !t.completed
+          }
+          : t
+      )
+    )
+  }
+
+  const allTasks = todos.length;
+
+  const completedTasks = todos.filter(
+    (todo) => todo.completed
+  ).length;
+
+  const pendingTasks = todos.filter(
+    (todo) => !todo.completed
+  ).length;
+
   return (
     <>
-      <AddTodo addTodo={handleAdd} EditVal={EditVal} />
+
+      <div className="status">
+        <AddTodo addTodo={handleAdd} EditVal={EditVal} />
+
+        <div className="dashboard">
+
+          <div className="card">
+            <h3>All Tasks</h3>
+            <h1>{allTasks}</h1>
+          </div>
+
+          <div className="card">
+            <h3>Pending</h3>
+            <h1>{pendingTasks}</h1>
+          </div>
+
+          <div className="card">
+            <h3>Completed</h3>
+            <h1>{completedTasks}</h1>
+          </div>
+
+        </div>
+      </div>
 
       <ListTodo
         todos={todos}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
+        handleCheck={handleCheck}
       />
     </>
   );
