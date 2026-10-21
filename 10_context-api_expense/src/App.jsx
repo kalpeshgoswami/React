@@ -3,6 +3,7 @@ import { expenseContext } from "./context/ExpenseContext"
 import Add from "./components/Add"
 import ExpenseList from "./components/ExpenseList"
 import ExpenseStats from "./components/ExpenseStats"
+import Example from "./concept/CounterUseReducer"
 
 const App = () => {
 
@@ -16,11 +17,13 @@ const App = () => {
 
     return (
         <>
-            <Add handleAdd={handleAdd} />
+            {/* <Add handleAdd={handleAdd} />
 
             <ExpenseStats />
 
-            <ExpenseList expenseList={expenseList} />
+            <ExpenseList expenseList={expenseList} /> */}
+
+            <Example/>
         </>
     )
 }

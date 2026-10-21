@@ -144,7 +144,6 @@ const ExpenseList = () => {
     }));
   };
 
-  // Search and Filter
   let filterList = expenseList.filter((expense) => {
     const titleMatch = expense.title
       ?.toLowerCase()
@@ -160,7 +159,6 @@ const ExpenseList = () => {
     return titleMatch && typeMatch && categoryMatch;
   });
 
-  // Sorting
   filterList = [...filterList];
 
   switch (expenseQuery.sort) {
@@ -189,7 +187,7 @@ const ExpenseList = () => {
       <h2>Expense List</h2>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        {/* Search by Title */}
+       
         <label htmlFor="search">Search: </label>
         <input
           id="search"
@@ -198,7 +196,7 @@ const ExpenseList = () => {
           value={expenseQuery.title}
           onChange={(e) => handleChange("title", e)}
         />{" "}
-        {/* Category Filter */}
+        
         <label htmlFor="category">Category: </label>
         <select
           id="category"
@@ -214,7 +212,7 @@ const ExpenseList = () => {
           <option value="Shopping">Shopping</option>
           <option value="Travel">Travel</option>
         </select>{" "}
-        {/* Type Filter */}
+    
         <label htmlFor="type">Type: </label>
         <select
           id="type"
@@ -225,7 +223,7 @@ const ExpenseList = () => {
           <option value="debit">Debit</option>
           <option value="credit">Credit</option>
         </select>{" "}
-        {/* Sorting */}
+    
         <label htmlFor="sort">Sort: </label>
         <select
           id="sort"
@@ -309,4 +307,3 @@ const ExpenseList = () => {
 };
 
 export default ExpenseList;
-  
