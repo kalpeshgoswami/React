@@ -69,35 +69,6 @@ function AddStudent() {
     }));
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!String(formData.GRid).trim()) {
-      newErrors.GRid = "GR ID is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Enter a valid email";
-    }
-
-    if (!formData.course.trim()) {
-      newErrors.course = "Course is required";
-    }
-
-    if (!String(formData.PhoneNumber).trim()) {
-      newErrors.PhoneNumber = "Phone number is required";
-    }
-
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
