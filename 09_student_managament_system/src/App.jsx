@@ -11,7 +11,7 @@ const App = () => {
     {
       path: "/",
       element: <MainLayout />,
-      // errorElement: <Error />,
+      errorElement: <Error />,
       children: [
         {
           index: true,

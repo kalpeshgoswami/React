@@ -52,7 +52,7 @@ export const addStudent = async (studentData) => {
 
 export async function deleteStudent(id) {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/student/${id}`, {
       method: "DELETE",
     })
 
@@ -76,7 +76,7 @@ export async function deleteStudent(id) {
 export async function updatedStudent(id, studentData) {
   try {
 
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/student/${id}`, {
       method: "patch",
       headers: {
         "Content-Type": "application/json",

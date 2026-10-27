@@ -1,31 +1,30 @@
-import { useContext } from "react"
-import { expenseContext } from "./context/ExpenseContext"
-import Add from "./components/Add"
-import ExpenseList from "./components/ExpenseList"
-import ExpenseStats from "./components/ExpenseStats"
-import Example from "./concept/CounterUseReducer"
+import { useContext } from "react";
+import { expenseContext } from "./context/ExpenseContext";
+import Add from "./components/Add";
+import ExpenseList from "./components/ExpenseList";
+import ExpenseStats from "./components/ExpenseStats";
+import Example from "./concept/CounterUseReducer";
 
 const App = () => {
+  const { expenseList, addExpense } = useContext(expenseContext);
 
-    const { expenseList, addExpense } = useContext(expenseContext)
+  console.log("expenseList", expenseList);
 
-    console.log("expenseList", expenseList)
+  const handleAdd = (input) => {
+    addExpense(input);
+  };
 
-    const handleAdd = (input) => {
-        addExpense(input)
-    }
+  return (
+    <>
+      <Add handleAdd={handleAdd} />
 
-    return (
-        <>
-            {/* <Add handleAdd={handleAdd} />
+      <ExpenseStats />
 
-            <ExpenseStats />
+      <ExpenseList expenseList={expenseList} />
 
-            <ExpenseList expenseList={expenseList} /> */}
+      {/* <Example /> */}
+    </>
+  );
+};
 
-            <Example/>
-        </>
-    )
-}
-
-export default App
+export default App;
