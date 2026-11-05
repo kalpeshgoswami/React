@@ -1,16 +1,123 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📦 Inventory Management System
 
-Currently, two official plugins are available:
+A simple and user-friendly **Inventory Management System** built using React, Vite, and Redux Toolkit. This project helps manage inventory items with centralized state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Live Link:
 
-## React Compiler
+https://gleaming-pasca-aa2b9e.netlify.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- React.js
+- Vite
+- Redux Toolkit
+- React Redux
+- JavaScript (ES6+)
+- CSS3
+- ESLint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Project Structure
+
+```text
+inventory_man_system/
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Add.jsx
+│   │   └── List.jsx
+│   │
+│   ├── features/
+│   │   └── inventorySlice.jsx
+│   │
+│   ├── store/
+│   │   └── store.jsx
+│   │
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+```
+
+## ⚙️ Installation & Setup
+
+### 1. Clone Repository
+
+```bash
+git clone <your-repository-url>
+```
+
+### 2. Navigate to Project
+
+```bash
+cd inventory_man_system
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Start Development Server
+
+```bash
+npm run dev
+```
+
+Open the local URL in your browser:
+
+```text
+http://localhost:5173
+```
+
+## 📜 Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Create production build |
+| `npm run lint` | Run ESLint |
+| `npm run preview` | Preview production build |
+
+## 🧩 Project Components
+
+- **Add.jsx** – Add inventory items.
+- **List.jsx** – Display inventory items.
+- **inventorySlice.jsx** – Manage inventory state and reducers.
+- **store.jsx** – Configure Redux store.
+- **App.jsx** – Main application component.
+
+## 🔄 State Management
+
+This project uses Redux Toolkit for centralized state management.
+
+- `useSelector()` – Access Redux state.
+- `useDispatch()` – Dispatch Redux actions.
+- `createSlice()` – Create reducers and actions.
+- `configureStore()` – Configure Redux store.
+
+## 🔮 Future Improvements
+
+- Search and filter inventory items.
+- Update and delete inventory records.
+- Form validation.
+- Low-stock notifications.
+- Backend API integration.
+- User authentication.
+
+## 👨‍💻 Author
+
+**Kalpesh Goswami**
+
+---
+
+⭐ If you like this project, don't forget to give it a star!

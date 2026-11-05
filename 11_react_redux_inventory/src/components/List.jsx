@@ -81,6 +81,9 @@ const List = () => {
 
       <button onClick={handleReset}>reset</button>
 
+      <br />
+      <br />
+
       {sortedList.length === 0 ? (
         <h3>Data Not Found</h3>
       ) : (
