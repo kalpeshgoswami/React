@@ -6,8 +6,22 @@ const initialState = {
       id: 1,
       name: "phone",
       qty: 1,
-      price: 100000,
+      price: 10000,
       category: "electronics",
+    },
+    {
+      id: 2,
+      name: "laptop",
+      qty: 2,
+      price: 50000,
+      category: "electronics",
+    },
+    {
+      id: 3,
+      name: "chair",
+      qty: 4,
+      price: 5000,
+      category: "furniture",
     },
   ],
   editVal: null,
@@ -46,6 +60,7 @@ const inventorySlice = createSlice({
   },
 });
 
-export const { add, deleteProduct, setEditValue } = inventorySlice.actions;
+export const { add, deleteProduct, updateProduct, setEditValue } =
+  inventorySlice.actions;
 
 export default inventorySlice.reducer;

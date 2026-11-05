@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { add } from "../features/inventorySlice";
+import { add, updateProduct } from "../features/inventorySlice";
 
 const Add = () => {
   const [input, setInput] = useState({
@@ -31,17 +31,34 @@ const Add = () => {
     e.preventDefault();
 
     if (!input.name || !input.qty || !input.price || !input.category) {
-      return alert("all data required");
-    } else {
-      dispatch(add(input));
-
-      setInput({
-        name: "",
-        qty: "",
-        price: "",
-        category: "",
-      });
+      return alert("All data required");
     }
+
+    if (editVal !== null) {
+      dispatch(
+        updateProduct({
+          id: editVal.id,
+          ...input,
+          qty: Number(input.qty),
+          price: Number(input.price),
+        }),
+      );
+    } else {
+      dispatch(
+        add({
+          ...input,
+          qty: Number(input.qty),
+          price: Number(input.price),
+        }),
+      );
+    }
+
+    setInput({
+      name: "",
+      qty: "",
+      price: "",
+      category: "",
+    });
   };
   console.log("input", input);
   return (
@@ -92,8 +109,10 @@ const Add = () => {
         <br />
         <br />
 
-        <button onClick={handleSubmit}>Add</button>
-        
+        <button type="submit">{editVal ? "Update" : "Add"}</button>
+
+        <br />
+        <br />
       </form>
     </>
   );
