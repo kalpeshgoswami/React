@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authApi";
 import { AuthContext } from "../context/AuthContext";
 
+import "../Login.css";
+
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
