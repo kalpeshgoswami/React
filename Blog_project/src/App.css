@@ -28,8 +28,6 @@ a {
   color: inherit;
 }
 
-/* Navbar */
-
 .navbar {
   width: 100%;
   min-height: 70px;
@@ -78,7 +76,6 @@ a {
   background: #dc2626;
 }
 
-/* Home Page */
 
 .home-container {
   width: 86%;
@@ -113,8 +110,6 @@ a {
 .add-blog-btn:hover {
   background: #1d4ed8;
 }
-
-/* Blog Grid */
 
 .blog-grid {
   display: grid;
@@ -204,7 +199,6 @@ a {
   background: #dc2626;
 }
 
-/* Add Blog & Edit Blog */
 
 .add-blog-container,
 .edit-blog-container {
@@ -323,8 +317,6 @@ a {
   background: #d1d5db;
 }
 
-/* Login & Register */
-
 .auth-container {
   min-height: 100vh;
   display: flex;
@@ -383,8 +375,6 @@ a {
   background: #1d4ed8;
 }
 
-/* Messages */
-
 .error-message {
   color: #dc2626;
   background: #fee2e2;
@@ -411,7 +401,6 @@ a {
   margin-top: 10px;
 }
 
-/* Responsive */
 
 @media (max-width: 992px) {
   .blog-grid {
