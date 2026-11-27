@@ -5,7 +5,7 @@ A full-stack Blog Application built using the MERN Stack (MongoDB, Express.js, R
 
 ## 🚀 LIVE LINK
 
-Vercel : https://blogproject1-nine.vercel.app/login
+Netlify : https://unique-smakager-7e0927.netlify.app
 
 ## 🚀 Features
 
